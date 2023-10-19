@@ -14,7 +14,7 @@ export const NavWrapper = styled.div`
       cursor: pointer;
 
       &:hover {
-         color: red;
+         color: ${({ theme }) => theme.colors?.primary};
          font-weight: bolder;
       }
    }

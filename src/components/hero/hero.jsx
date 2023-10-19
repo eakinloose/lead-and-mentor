@@ -17,8 +17,8 @@ const Hero = () => {
                adding positive value to communal growth and career development.
             </p>
             <div className="btn-flex">
-               <button>button type</button>
-               <button className="buttonClear">button type 2</button>
+               <button>Get Started</button>
+               <button className="buttonClear">Discover Now</button>
             </div>
          </div>
          <img src={heroimage} />
