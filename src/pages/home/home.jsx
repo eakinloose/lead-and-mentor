@@ -1,13 +1,13 @@
-import logo from "../../assets/logo.png";
-import BlogCard from "../../components/blogCard";
-import Card from "../../components/card";
+// import logo from "../../assets/logo.png";
+// import BlogCard from "../../components/blogCard";
+// import Card from "../../components/card";
 import CardsAndTestimonies from "../../components/cardsAndTestimonies/cardsAndTestimonies";
-import { blogData } from "../../components/cardsAndTestimonies/cardsData";
+// import { blogData } from "../../components/cardsAndTestimonies/cardsData";
 import Discover from "../../components/discover/discover";
+import Footer from "../../components/footer/footer";
 import Hero from "../../components/hero/hero";
+import NewsLetter from "../../components/newsLetter/newsLetter";
 import Logs from "../../components/weblogs/logs";
-
-
 
 const Home = () => {
    return (
@@ -16,7 +16,9 @@ const Home = () => {
          <Logs />
          <Discover />
          <CardsAndTestimonies />
-         <h2>Home</h2>
+         <NewsLetter />
+         <Footer />
+         {/* <h2>Home</h2>
          <img src={logo} />
          <br />
          <button>button type</button>
@@ -50,7 +52,7 @@ const Home = () => {
                text={blog.text}
                rating={blog.rating}
             />
-         ))}
+         ))} */}
       </div>
    );
 };

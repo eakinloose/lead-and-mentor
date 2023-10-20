@@ -1,4 +1,5 @@
 import BlogCard from "../blogCard";
+import Testimonies from "../testimonies";
 import {
    CardsAndTestimoniesWrapper,
    CardGrid,
@@ -43,6 +44,7 @@ const CardsAndTestimonies = () => {
                />
             ))}
          </CardGrid>
+         <Testimonies />
       </CardsAndTestimoniesWrapper>
    );
 };
