@@ -19,3 +19,9 @@ export const CardGrid = styled.div`
    justify-content: space-between;
    align-items: center;
 `;
+
+export const DualCardGrid = styled.div`
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   width: 40%;
+`;

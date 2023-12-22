@@ -93,6 +93,50 @@ const GlobalStyles = createGlobalStyle`
     text-transform: capitalize !important;
     color: grey;
   }
+
+  .scrolling{
+    /* background-image: linear-gradient(to bottom right, #F37D02, #177415); */
+    color: #177415;
+    transition: opacity 0.5s ease;
+    background-color: #efefef;
+    transition: background-color 1s ease;
+  }
+
+  #abt-cnt{
+    margin:0 10rem 2rem;
+   p{
+    width: 60%;
+    margin: 10rem auto;
+   }
+  }
+
+  .gradient-circles {
+  position: relative;
+
+  overflow: hidden;
+}
+
+.gradient-circles::before,
+.gradient-circles::after {
+  content: '';
+  position: absolute;
+  width: 200px; 
+  height: 200px;
+  border-radius: 50%;
+}
+
+.gradient-circles::before {
+  background: radial-gradient(circle at top left, #F37D02, #177415);
+  opacity: 0.2;
+  
+}
+
+.gradient-circles::after {
+  bottom: 0px; 
+  right: 0px;
+  opacity: 0.1;
+  background: radial-gradient(circle at bottom right, #F37D02, #177415);
+}
 `;
 
 export { GlobalStyles };

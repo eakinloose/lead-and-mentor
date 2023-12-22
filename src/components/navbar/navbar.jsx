@@ -1,16 +1,28 @@
+/* eslint-disable react/prop-types */
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { NavWrapper } from "./navbarStyles";
 
-const Navbar = () => {
+const Navbar = ({ isScrolled }) => {
    return (
-      <NavWrapper>
+      <NavWrapper className={isScrolled && "scrolling"}>
          <img src={logo} />
          <div>
-            <span>Home</span>
-            <span>About Us</span>
-            <span>Blog</span>
-            <span>Contact</span>
-            <span>Courses</span>
+            <Link to="/">
+               <span>Home</span>
+            </Link>
+            <Link to="about">
+               <span>About Us</span>
+            </Link>
+            <Link to="blog">
+               <span>Blog</span>
+            </Link>
+            <Link to="contact">
+               <span>Contact</span>
+            </Link>
+            <Link to="courses">
+               <span>Courses</span>
+            </Link>
          </div>
          <button>Register</button>
       </NavWrapper>

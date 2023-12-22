@@ -6,6 +6,9 @@ import Home from "./pages/home/home";
 import Page404 from "./pages/404/404";
 import Admin from "./pages/admin/admin";
 import Navbar from "./components/navbar/navbar";
+import { useState } from "react";
+import About from "./pages/about/about";
+import Blog from "./pages/blog/blog";
 
 const theme = {
    colors: {
@@ -25,24 +28,26 @@ const theme = {
 
 function App() {
    //  const [display, setDisplay] = useState(true);
-   //  const [isScrolled, setIsScrolled] = useState(false);
+   const [isScrolled, setIsScrolled] = useState(false);
 
    //  const toggledisplay = () => {
    //     setDisplay(!display);
    //  };
 
-   //  window.onscroll = () => {
-   //     setIsScrolled(window.scrollY === 0 ? false : true);
-   //     return () => (window.onscroll = null);
-   //  };
+   window.onscroll = () => {
+      setIsScrolled(window.scrollY === 0 ? false : true);
+      return () => (window.onscroll = null);
+   };
 
    return (
       <ThemeProvider theme={theme}>
          <GlobalStyles />
-         <Navbar />
+         <Navbar isScrolled={isScrolled} />
          <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/blog" element={<Blog />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/about" element={<About />} />
             <Route path="/*" element={<Page404 />} />
             {/* <Route path="/news/:id" element={<News />} /> */}
          </Routes>

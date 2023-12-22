@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const NavWrapper = styled.div`
    width: 100vw;
+   position: fixed;
+   z-index: 9999;
    padding: 4rem 10rem;
    display: flex;
    justify-content: space-between;
@@ -12,6 +14,8 @@ export const NavWrapper = styled.div`
    span {
       margin: 0 3rem;
       cursor: pointer;
+      font-weight: bolder;
+
 
       &:hover {
          color: ${({ theme }) => theme.colors?.primary};
