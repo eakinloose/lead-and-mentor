@@ -8,6 +8,10 @@ export const FooterWrapper = styled.div`
    background: #3a3847;
    color: white;
 
+   span{
+      margin-top: .8rem;
+   }
+
    .right {
       display: flex;
    }
@@ -26,12 +30,17 @@ export const FooterWrapper = styled.div`
          margin-top: 4rem;
       }
    }
+   .second{
+      width: 20%;
+      margin-right: 4rem;
+   }
 
    .third {
-      width: 30%;
+      width: 40%;
 
       img {
-         height: 50px;
+         height: 30px;
+         margin-right: 2rem;
       }
    }
 `;

@@ -12,9 +12,15 @@ const TestimoniesWrapper = styled.div`
    justify-content: space-between;
    align-items: center;
 
+   img{
+      margin-right: 7rem;
+   }
+
    p {
       color: ${({ theme }) => theme.colors?.primary};
    }
+
+
 `;
 
 const TestimoniesTitle = styled.h3`
@@ -26,13 +32,15 @@ const Testimonial = styled.div`
    background: #f7f7f7;
    border-radius: 10px;
    max-width: 900px;
-   flex: 1;
+  
    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
    span {
       display: inline-block;
       width: 90%;
       margin: 2rem 0;
+      font-size: 1.2rem;
+      opacity: 0.85;
    }
 
    .Top {

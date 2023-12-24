@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const PageHeroWrapper = styled.div`
-   margin: 0 auto 12rem;
-   height: 500px;
+   margin: 0 auto 5rem;
+   height: 48vh;
    text-align: center;
    align-items: center;
    width: 100%;
@@ -32,9 +32,9 @@ export const PageHeroWrapper = styled.div`
 
    .pageName {
       width: 30%;
-      max-width: 250px;
-      padding: 1.8rem;
-      border-radius: 20px;
+      max-width: 170px;
+      padding: 0.5rem 1.4rem;
+      border-radius: 10px;
       position: absolute;
       z-index: 4;
       bottom: 0;

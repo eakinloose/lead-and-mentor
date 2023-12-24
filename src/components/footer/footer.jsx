@@ -37,9 +37,7 @@ const Footer = () => {
                5, OGUNSHE STREET, SAWMILL BUS STOP, SAGAMU ROAD, IKORODU, LAGOS,
                NIGERIA.
             </span>
-            <br />
-
-            <span>Accepted</span>
+            <br/>
             <img src={cards} alt="cards" />
          </div>
       </FooterWrapper>

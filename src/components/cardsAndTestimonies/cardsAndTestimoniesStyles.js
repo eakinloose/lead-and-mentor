@@ -23,5 +23,7 @@ export const CardGrid = styled.div`
 export const DualCardGrid = styled.div`
    display: grid;
    grid-template-columns: repeat(2, 1fr);
-   width: 40%;
+   width: 45%;
+   gap: 4rem 2rem;
+   margin-bottom: 2rem;
 `;

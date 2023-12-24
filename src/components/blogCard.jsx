@@ -43,7 +43,7 @@ export default BlogCard;
 const BlogCardWrapper = styled.div`
    border-radius: 10px;
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-   max-width: 350px;
+   max-width: 280px;
    background-color: #fff;
    overflow: hidden;
 `;
@@ -55,7 +55,7 @@ const Image = styled.img`
 `;
 
 const CardContent = styled.div`
-   padding: 10px 20px;
+   padding: 10px 15px;
 `;
 
 const Title = styled.h4`
@@ -65,13 +65,15 @@ const Title = styled.h4`
 
 const Text = styled.p`
    line-height: 1.5;
-   opacity: 0.7;
+   opacity: 0.6;
+   font-size: 85%;
 `;
 
 const Buttom = styled.div`
    display: flex;
    justify-content: space-between;
    align-items: center;
+   font-size: 85%;
 `;
 
 const Rating = styled.div`
@@ -91,4 +93,5 @@ const ReadMoreButton = styled.span`
    border-radius: 5px;
    padding: 10px 0;
    cursor: pointer;
+   font-size: 85%;
 `;

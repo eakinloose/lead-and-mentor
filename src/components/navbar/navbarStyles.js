@@ -4,7 +4,7 @@ export const NavWrapper = styled.div`
    width: 100vw;
    position: fixed;
    z-index: 9999;
-   padding: 4rem 10rem;
+   padding: 2rem 10rem;
    display: flex;
    justify-content: space-between;
    align-items: center;
@@ -15,6 +15,7 @@ export const NavWrapper = styled.div`
       margin: 0 3rem;
       cursor: pointer;
       font-weight: bolder;
+      font-size: 1.2rem;
 
 
       &:hover {
