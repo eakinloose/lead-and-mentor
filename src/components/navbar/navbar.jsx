@@ -24,7 +24,9 @@ const Navbar = ({ isScrolled }) => {
                <span>Courses</span>
             </Link>
          </div>
+         <Link to="register">
          <button>Register</button>
+         </Link>
       </NavWrapper>
    );
 };

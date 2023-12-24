@@ -9,6 +9,7 @@ import Navbar from "./components/navbar/navbar";
 import { useState } from "react";
 import About from "./pages/about/about";
 import Blog from "./pages/blog/blog";
+import AuthPage from "./pages/auth/auth";
 
 const theme = {
    colors: {
@@ -48,6 +49,7 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/about" element={<About />} />
+            <Route path="/register" element={<AuthPage />} />
             <Route path="/*" element={<Page404 />} />
             {/* <Route path="/news/:id" element={<News />} /> */}
          </Routes>
