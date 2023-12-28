@@ -10,51 +10,57 @@ import { useState } from "react";
 import About from "./pages/about/about";
 import Blog from "./pages/blog/blog";
 import AuthPage from "./pages/auth/auth";
+import Modal from "./components/modal";
+import Book from "./pages/book/book";
 
 const theme = {
-   colors: {
-      white: "#ffffff",
-      black: "#000000",
-      primary: "#F37D02",
-      secondary: "#177415",
-      button: "#177415",
-      buttonHover: "#375425",
-      grey01: "#fbfbfb",
-      grey02: "#e2e2e2",
-      inputhover: "#f3f0f0c3",
-      transparent: "transparent",
-      red: "#e0515f",
-   },
+  colors: {
+    white: "#ffffff",
+    black: "#000000",
+    primary: "#F37D02",
+    secondary: "#177415",
+    button: "#177415",
+    buttonHover: "#375425",
+    grey01: "#fbfbfb",
+    grey02: "#e2e2e2",
+    inputhover: "#f3f0f0c3",
+    transparent: "transparent",
+    red: "#e0515f",
+  },
 };
 
 function App() {
-   //  const [display, setDisplay] = useState(true);
-   const [isScrolled, setIsScrolled] = useState(false);
+  //  const [display, setDisplay] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-   //  const toggledisplay = () => {
-   //     setDisplay(!display);
-   //  };
+  //  const toggledisplay = () => {
+  //     setDisplay(!display);
+  //  };
 
-   window.onscroll = () => {
-      setIsScrolled(window.scrollY === 0 ? false : true);
-      return () => (window.onscroll = null);
-   };
+  window.onscroll = () => {
+    setIsScrolled(window.scrollY === 0 ? false : true);
+    return () => (window.onscroll = null);
+  };
 
-   return (
-      <ThemeProvider theme={theme}>
-         <GlobalStyles />
-         <Navbar isScrolled={isScrolled} />
-         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/register" element={<AuthPage />} />
-            <Route path="/*" element={<Page404 />} />
-            {/* <Route path="/news/:id" element={<News />} /> */}
-         </Routes>
-      </ThemeProvider>
-   );
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <Navbar isScrolled={isScrolled} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/register" element={<AuthPage />} />
+        <Route path="/*" element={<Page404 />} />
+        <Route path="/book-launch" element={<Book />} />
+        {/* <Route path="/news/:id" element={<News />} /> */}
+      </Routes>
+      <div>
+        <Modal />
+      </div>
+    </ThemeProvider>
+  );
 }
 
 export default App;
