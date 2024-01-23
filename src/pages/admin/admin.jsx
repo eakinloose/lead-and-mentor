@@ -1,8 +1,10 @@
 import styled from "styled-components";
 // import { useEffect } from "react";
-import { Route, Routes,
+import {
+  Route,
+  Routes,
   //  useNavigate
-   } from "react-router-dom";
+} from "react-router-dom";
 // import Onboarding from "../../Dashboard/Pages/Onboarding/Onboarding";
 // import Staffs from "../../Dashboard/Pages/Staffs/Staffs";
 // import Ratings from "../../Dashboard/Pages/Ratings/Ratings";
@@ -20,21 +22,20 @@ const Admin = () => {
   //  const auth = useSelector((state) => state.auth);
   //  const navigate = useNavigate();
 
-   // useEffect(() => {
-   //    if (!auth._id) {
-   //       navigate("/login");
-   //    }
-   // }, [auth._id, navigate, URL]);
+  // useEffect(() => {
+  //    if (!auth._id) {
+  //       navigate("/login");
+  //    }
+  // }, [auth._id, navigate, URL]);
 
-   return (
-      <DashpageWrapper>
-         <Sidenav />
-         <MainPageWrapper>
-            {/* <DashTop /> */}
-            <DashContent>
-               <Routes>
-                  <Route path="/" element={<Blogpost />} />
-                  {/* <Route path="/review" element={<CandidateReview />} />
+  return (
+    <DashpageWrapper>
+      <Sidenav />
+      <MainPageWrapper>
+        <DashContent>
+          <Routes>
+            <Route path="/" element={<Blogpost />} />
+            {/* <Route path="/review" element={<CandidateReview />} />
                   <Route path="/onboard" element={<Onboarding />} />
                   <Route path="/employees" element={<Staffs />} />
                   <Route path="/employees/:id" element={<Employee />} />
@@ -42,29 +43,27 @@ const Admin = () => {
                   <Route path="/ratings" element={<Ratings />} />
                   <Route path="/timeoff" element={<TimeOff />} />
                   <Route path="/procurements" element={<Procurements />} /> */}
-               </Routes>
-            </DashContent>
-         </MainPageWrapper>
-      </DashpageWrapper>
-   );
+          </Routes>
+        </DashContent>
+      </MainPageWrapper>
+    </DashpageWrapper>
+  );
 };
 
 export default Admin;
 
-
-
- const MainPageWrapper = styled.div`
-   display: flex;
-   flex-direction: column;
-   flex: 1;
-   height: 100vh;
-   position: relative;
+const MainPageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  position: relative;
+  height: 100vh;
 `;
 
- const DashContent = styled.div`
-   background: ${({ theme }) => theme.colors.white};
-   width: 100%;
-   flex: 1;
-   overflow-y: auto;
-   padding: 2rem;
+const DashContent = styled.div`
+  background: ${({ theme }) => theme.colors.white};
+  overflow-y: auto;
+  padding: 2rem;
+  width: 100%;
 `;

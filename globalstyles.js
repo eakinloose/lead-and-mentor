@@ -17,6 +17,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     min-height: 100%;
     width: 100%;
+    overscroll-behavior: none;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     font-size: 1.4rem;
@@ -104,58 +105,57 @@ const GlobalStyles = createGlobalStyle`
 
   #abt-cnt{
     margin:0 10rem 2rem;
-   p{
-    width: 60%;
-    margin: 10rem auto;
-   }
+    p{
+      width: 60%;
+      margin: 10rem auto;
+    }
   }
 
   .gradient-circles {
-  position: relative;
+    position: relative;
+    overflow: hidden;
+  }
 
-  overflow: hidden;
-}
+  .gradient-circles::before,
+  .gradient-circles::after {
+    content: '';
+    position: absolute;
+    width: 200px; 
+    height: 200px;
+    border-radius: 50%;
+  }
 
-.gradient-circles::before,
-.gradient-circles::after {
-  content: '';
-  position: absolute;
-  width: 200px; 
-  height: 200px;
-  border-radius: 50%;
-}
+  .gradient-circles::before {
+    background: radial-gradient(circle at top left, #F37D02, #177415);
+    opacity: 0.2;
+    
+  }
 
-.gradient-circles::before {
-  background: radial-gradient(circle at top left, #F37D02, #177415);
-  opacity: 0.2;
-  
-}
+  .gradient-circles::after {
+    bottom: 0px; 
+    right: 0px;
+    opacity: 0.1;
+    background: radial-gradient(circle at bottom right, #F37D02, #177415);
+  }
 
-.gradient-circles::after {
-  bottom: 0px; 
-  right: 0px;
-  opacity: 0.1;
-  background: radial-gradient(circle at bottom right, #F37D02, #177415);
-}
+  .pagination{
+    display: flex;
+    margin: 0 auto 4rem ;
+    align-items:center ;
+    justify-content:center ;
 
-.pagination{
-  display: flex;
-  margin: 0 auto 4rem ;
-  align-items:center ;
-  justify-content:center ;
+  }
 
-}
+  .pagination button{
+    width: 40px;
+    border-radius:0;
+    border: none;
+    margin: 0 .32rem;
+  }
 
-.pagination button{
-  width: 40px;
-  border-radius:0;
-  border: none;
-  margin: 0 .32rem;
-}
-
-.pagination button.active {
-   background-color: ${({ theme }) => theme.colors?.primary};
-}
+  .pagination button.active {
+    background-color: ${({ theme }) => theme.colors?.primary};
+  }
 `;
 
 export { GlobalStyles };

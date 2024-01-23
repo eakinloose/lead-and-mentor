@@ -1,20 +1,21 @@
-import { useState } from "react";
+// import { useState } from "react";
 import logo from "../assets/logo.png";
 import styled from "styled-components";
 import NavLinks from "./sidemenu";
 
 const Sidenav = () => {
-  const [inactive, setInactive] = useState(false);
+  // const [inactive, setInactive] = useState(false);
 
-  const toggleSideNav = () => {
-    setInactive(!inactive);
-  };
+  // const toggleSideNav = () => {
+  //   setInactive(!inactive);
+  // };
 
   return (
-    <SidemenuWrapper inactive={inactive}>
+    // <SidemenuWrapper inactive={inactive}>
+    <SidemenuWrapper>
       <TopSection>
         <img src={logo} alt="logo" />
-        <ToggleMenu inactive={inactive}>
+        {/* <ToggleMenu inactive={inactive}>
           {inactive ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -40,15 +41,16 @@ const Sidenav = () => {
               <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z" />
             </svg>
           )}
-        </ToggleMenu>
+        </ToggleMenu> */}
       </TopSection>
       <SearchController>
-        {!inactive && <input placeholder="Search" />}
+        {/* {!inactive && <input placeholder="Search" />} */}
+        <input placeholder="Search" />
       </SearchController>
       <hr />
       <NavLinks />
-
-      {!inactive && <p className="footer">&copy; Denukan Network Limited</p>}
+      <p className="footer">&copy; Denukan Network Limited</p>
+      {/* {!inactive && <p className="footer">&copy; Denukan Network Limited</p>} */}
     </SidemenuWrapper>
   );
 };
@@ -56,7 +58,8 @@ const Sidenav = () => {
 export default Sidenav;
 
 export const SidemenuWrapper = styled.div`
-  width: ${(props) => (props.inactive ? "55px" : "280px")};
+  /* width: ${(props) => (props.inactive ? "55px" : "280px")}; */
+  width: 280px;
   background: #efefef;
   height: 100vh;
   color: ${({ theme }) => theme.colors?.secondary};

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import bookimg from "../assets/book.jpeg";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -41,9 +41,6 @@ const ModalWrap = styled.div`
     }
     img {
       width: 50%;
-      /* height: 70%; */
-      /* border-radius: 10px;
-      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
       text-align: center;
       margin: auto;
       justify-self: center;
@@ -52,7 +49,7 @@ const ModalWrap = styled.div`
       transform: translateX(-50%);
     }
 
-    p{
+    p {
       font-size: 90%;
     }
   }
@@ -70,6 +67,7 @@ const ModalWrap = styled.div`
 
 const Modal = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const book = useSelector((state) => state.books);
 
   if (sessionStorage.getItem("myFunctionExecuted") === "true") {
     return;
@@ -103,6 +101,7 @@ const Modal = () => {
                 <AiOutlineCloseCircle />
               </h1>
               <div>
+                <h1>{book?.books[0]?.authorsWord}</h1>
                 <Link to="book-launch" onClick={navigateMe}>
                   <img src={bookimg} alt="" />
                 </Link>

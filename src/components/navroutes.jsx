@@ -23,7 +23,7 @@ const NavRoutes = ({ link }) => {
                   return;
                 } else {
                   console.log(link.path);
-                  navigate(`/dashboard${link.path}`);
+                  navigate(`/admin${link.path}`);
                 }
               }}
             >
@@ -55,7 +55,7 @@ const NavRoutes = ({ link }) => {
                 return;
               } else {
                 // history.push(link.path);
-                navigate(`/dashboard${link.path}`);
+                navigate(`/admin${link.path}`);
                 console.log(link.path);
               }
             }}

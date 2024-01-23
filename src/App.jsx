@@ -1,17 +1,23 @@
-// import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
+import { useDispatch } from "react-redux";
 import { GlobalStyles } from "../globalstyles";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home/home";
 import Page404 from "./pages/404/404";
 import Admin from "./pages/admin/admin";
 import Navbar from "./components/navbar/navbar";
-import { useState } from "react";
 import About from "./pages/about/about";
 import Blog from "./pages/blog/blog";
 import AuthPage from "./pages/auth/auth";
 import Modal from "./components/modal";
 import Book from "./pages/book/book";
+import BlogPage from "./pages/blogPage/BlogPage";
+import DonationsPage from "./pages/donations/DonationsPage";
+import CoursesPage from "./pages/courses/CoursesPage";
+import { fetchBooks } from "./features/book/bookSlice";
+import { loadUser } from "./features/auth/authSlice";
+export const BASE_URL = "https://tiny-fawn-moccasins.cyclic.app";
 
 const theme = {
   colors: {
@@ -32,10 +38,19 @@ const theme = {
 function App() {
   //  const [display, setDisplay] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchBooks());
+  }, [dispatch]);
 
   //  const toggledisplay = () => {
   //     setDisplay(!display);
   //  };
+
+  useEffect(() => {
+    dispatch(loadUser(null));
+  }, [dispatch]);
 
   window.onscroll = () => {
     setIsScrolled(window.scrollY === 0 ? false : true);
@@ -49,12 +64,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogPage />} />
+        <Route path="/donations/:id" element={<DonationsPage />} />
+        <Route path="/courses/:id" element={<CoursesPage />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/about" element={<About />} />
         <Route path="/register" element={<AuthPage />} />
         <Route path="/*" element={<Page404 />} />
         <Route path="/book-launch" element={<Book />} />
-        {/* <Route path="/news/:id" element={<News />} /> */}
       </Routes>
       <div>
         <Modal />

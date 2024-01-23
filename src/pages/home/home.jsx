@@ -9,6 +9,8 @@ import Hero from "../../components/hero/hero";
 import NewsLetter from "../../components/newsLetter/newsLetter";
 import Logs from "../../components/weblogs/logs";
 
+
+
 const Home = () => {
    return (
       <div>

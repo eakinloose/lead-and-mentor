@@ -1,6 +1,8 @@
-/* eslint-disable react/prop-types */
-
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { loginUser, registerUser } from "../features/auth/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const slideIn = keyframes`
   from {
@@ -16,50 +18,203 @@ const Form = styled.form`
   flex-direction: column;
   animation: ${slideIn} 1s forwards;
 
-  h3{
+  h3 {
     color: ${({ theme }) => theme.colors?.primary};
   }
 `;
 
+export const LoginForm = () => {
+  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
-
-export const LoginForm = ({ onSubmit }) => {
-  const handleSubmit = (e) => {
+  const handleSignin = (e) => {
     e.preventDefault();
-    // Handle login form submission
-    if (onSubmit) {
-      onSubmit();
-    }
+    dispatch(
+      loginUser({
+        email: email,
+        password: password,
+      })
+    );
   };
 
+  useEffect(() => {
+    if (auth?.loginStatus == "rejected") {
+      console.log(auth);
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+    } else if (auth?.loginStatus == "success") {
+      setSuccess(true);
+    }
+    console.log("i ran");
+
+    if (success && auth._id) {
+      navigate("/login");
+    }
+  }, [auth.loginStatus]);
+
   return (
-   
-    <Form onSubmit={handleSubmit}>
+    <Form>
       <h3>Welcome Back</h3>
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Password" />
-      <button type="submit">Login</button>
+      <input
+        required
+        type="email"
+        placeholder="Example@email.com"
+        value={email}
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+      />
+      <input
+        required
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => {
+          setPassword(e.target.value);
+        }}
+      />
+      {error && (
+        <span style={{ color: "red" }}>{auth?.loginError?.message}</span>
+      )}
+      {auth?.loginStatus == "pending" ? (
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
+          Loading...
+        </button>
+      ) : (
+        <button type="submit" onClick={handleSignin}>
+          Login
+        </button>
+      )}
     </Form>
   );
 };
 
-export const RegisterForm = ({ onSubmit }) => {
-  const handleSubmit = (e) => {
+export const RegisterForm = () => {
+  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [match, setMatch] = useState(null);
+
+  const handleRegister = (e) => {
     e.preventDefault();
-    // Handle register form submission
-    if (onSubmit) {
-      onSubmit();
+
+    if (password === confirmPassword) {
+      let user = {
+        name: name,
+        email: email,
+        password: password,
+        role: "user",
+      };
+      dispatch(registerUser(user));
+      console.log("fired");
+      setMatch(null);
+    } else {
+      setMatch("unmatch");
+
+      const timer = setTimeout(() => {
+        setMatch(null);
+      }, 3000);
+
+      return () => clearTimeout(timer);
     }
   };
 
+  useEffect(() => {
+    if (auth?.registerStatus == "rejected") {
+      console.log(auth);
+      setError(true);
+      const timer = setTimeout(() => {
+        setError(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    } else if (auth?.registerStatus == "success") {
+      setSuccess(true);
+    }
+    console.log("i ran");
+  }, [auth.registerStatus]);
+
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form>
       <h3>Create an Account</h3>
-      <input type="text" placeholder="Name" />
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Password" />
-      <input type="password" placeholder="Confirm Password" />
-      <button type="submit">Sign Up</button>
+      {success === true ? (
+        <div>
+          <h4 style={{ color: "green" }}>
+            Your Account has been successfully created <br />
+            We sent you a mail: Check your mail box
+          </h4>
+        </div>
+      ) : null}
+      <input
+        required
+        type="text"
+        placeholder="Full Name"
+        value={name}
+        onChange={(e) => {
+          setName(e.target.value);
+        }}
+      />
+      <input
+        required
+        type="email"
+        placeholder="Example@email.com"
+        value={email}
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+      />
+      <input
+        required
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => {
+          setPassword(e.target.value);
+        }}
+      />
+      <input
+        required
+        type="password"
+        placeholder="Confirm Password"
+        value={confirmPassword}
+        onChange={(e) => {
+          setConfirmPassword(e.target.value);
+        }}
+      />
+      {match === "unmatch" && (
+        <span style={{ color: "red" }}>password does not match</span>
+      )}
+      {error && (
+        <span style={{ color: "red" }}>{auth?.registerError?.message}</span>
+      )}
+      {auth?.registerStatus == "pending" ? (
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
+          Loading...
+        </button>
+      ) : (
+        <button type="submit" onClick={handleRegister}>
+          Sign Up
+        </button>
+      )}
     </Form>
   );
 };

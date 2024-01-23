@@ -22,7 +22,7 @@ export const SidebarRoutes = styled.div`
 `;
 const links = [
   {
-    title: "Overview",
+    title: "Blog post",
     icon: "bi bi-speedometer",
     path: "/",
   },
@@ -64,7 +64,7 @@ const links = [
     path: "/timeoff",
   },
   {
-    title: "Procurements",
+    title: "Books Manager",
     icon: "bi-bag-fill",
     path: "/procurements",
   },
